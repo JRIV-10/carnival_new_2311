@@ -39,6 +39,18 @@ RSpec.describe Ride do
 
             expect(ride1.total_revenue).to eq(0)
         end
+
+        it 'updates revenue' do 
+            ride3 = Ride.new({ name: 'Roller Coaster', min_height: 54, admission_fee: 2, excitement: :thrilling })
+            visitor3 = Visitor.new('Penny', 64, '$15')
+            visitor1 = Visitor.new('Bruce', 54, '$10')
+            visitor2 = Visitor.new('Tucker', 36, '$5')
+
+            visitor3.add_preference(:thrilling)
+            ride3.board_rider(visitor3)
+
+            expect(ride3.total_revenue).to eq(2)
+        end
     end
 
     describe '#rider_log' do 
