@@ -18,8 +18,10 @@ class Ride
     end
 
     def board_rider(visitor)
-        @rider_log[visitor] += 1
-        take_visitor_money(visitor)
+        if visitor.tall_enough?(@min_height) && visitor.preferences
+            @rider_log[visitor] += 1
+            take_visitor_money(visitor)
+        end 
     end
 
     def take_visitor_money(visitor)
