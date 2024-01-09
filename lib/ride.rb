@@ -17,4 +17,7 @@ class Ride
         total_revenue = 0
     end
 
+    def board_rider(visitor)
+        @rider_log[visitor] += 1
+    end
 end
