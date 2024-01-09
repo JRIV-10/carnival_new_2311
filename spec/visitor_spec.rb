@@ -43,4 +43,13 @@ RSpec.describe Visitor do
             expect(visitor1.preferences).to eq([:gentle, :thrilling])
         end 
     end
+
+    describe '#tall_enough?' do 
+        it 'is not tall enough' do 
+            visitor2 = Visitor.new('Tucker', 36, '$5')
+            visitor2.tall_enough?(54)
+
+            expect(visitor2.tall_enough?(36)).to eq(false)
+        end
+    end
 end 
