@@ -40,4 +40,25 @@ RSpec.describe Ride do
             expect(ride1.total_revenue).to eq(0)
         end
     end
+
+    describe '#rider_log' do 
+        it 'is a hash' do 
+            ride1 = Ride.new({ name: 'Carousel', min_height: 24, admission_fee: 1, excitement: :gentle })
+
+            expect(ride1.rider_log).to be_a Hash 
+        end
+    end
+    describe '#board_rider' do 
+        xit 'boards a rider' do 
+            ride1 = Ride.new({ name: 'Carousel', min_height: 24, admission_fee: 1, excitement: :gentle })
+            visitor1 = Visitor.new('Bruce', 54, '$10')
+            visitor2 = Visitor.new('Tucker', 36, '$5')
+
+            ride1.board_rider(visitor1)
+            ride1.board_rider(visitor2)
+            ride1.board_rider(visitor1)
+
+            expect(ride1.rider_log).to eq(rider_log[:visitor])
+        end
+    end
 end
