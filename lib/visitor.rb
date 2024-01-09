@@ -18,4 +18,9 @@ class Visitor
     def tall_enough?(min_height)
         @height >= min_height
     end
+
+    def take_spending_money(amount)
+        @spending_money = [@spending_money.to_i - amount, 0].max.to_s
+        amount 
+    end
 end

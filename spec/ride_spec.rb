@@ -49,7 +49,7 @@ RSpec.describe Ride do
         end
     end
     describe '#board_rider' do 
-        xit 'boards a rider' do 
+        it 'boards a rider' do 
             ride1 = Ride.new({ name: 'Carousel', min_height: 24, admission_fee: 1, excitement: :gentle })
             visitor1 = Visitor.new('Bruce', 54, '$10')
             visitor2 = Visitor.new('Tucker', 36, '$5')
@@ -58,7 +58,16 @@ RSpec.describe Ride do
             ride1.board_rider(visitor2)
             ride1.board_rider(visitor1)
 
-            expect(ride1.rider_log).to eq(rider_log[:visitor])
+            expect(ride1.rider_log[visitor1]).to eq(2)
+            expect(ride1.rider_log[visitor2]).to eq(1)
+        end
+
+        it 'takes admission fee' do 
+            ride1 = Ride.new({ name: 'Carousel', min_height: 24, admission_fee: 1, excitement: :gentle })
+            visitor1 = Visitor.new('Bruce', 54, '$10')
+
+            ride1.board_rider(visitor1)
+            expect(ride1.take_visitor_money(visitor1)).to eq(9)
         end
     end
 end
