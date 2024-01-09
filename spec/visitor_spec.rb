@@ -47,9 +47,20 @@ RSpec.describe Visitor do
     describe '#tall_enough?' do 
         it 'is not tall enough' do 
             visitor2 = Visitor.new('Tucker', 36, '$5')
-            visitor2.tall_enough?(54)
 
-            expect(visitor2.tall_enough?(36)).to eq(false)
+            expect(visitor2.tall_enough?(54)).to eq(false)
+
+            visitor1 = Visitor.new('Bruce', 54, '$10')
+
+            expect(visitor1.tall_enough?(64)).to eq(false)
+        end
+
+        it 'is tall enough' do 
+            visitor1 = Visitor.new('Bruce', 54, '$10')
+            visitor3 = Visitor.new('Penny', 64, '$15')
+
+            expect(visitor1.tall_enough?(54)).to eq(true)
+            expect(visitor3.tall_enough?(64)).to eq(true)
         end
     end
 end 
